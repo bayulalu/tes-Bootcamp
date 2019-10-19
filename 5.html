@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>No 5</title>
+</head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<body>
+
+    <br>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-lg-7">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nama</label>
+                        <input type="text" id="nama" class="form-control">
+                        </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Nim</label>
+                        <input type="text" id="nim"  class="form-control" >
+                    </div>
+                    <div class="form-group">
+                            <label for="exampleInputPassword1">Jumlah hadir</label>
+                            <input type="text" id="jlhHadir"  class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Tugas</label>
+                        <input type="text" id="tgs" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">UTS</label>
+                        <input type="text" id="uts" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">UAS</label>
+                        <input type="text" id="uas" class="form-control" >
+                    </div>
+                    
+                    <button type="submit"  class="btn btn-primary submit">Submit</button>
+            </div>
+        </div>
+            
+    </div>
+    
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>
+    
+$(document).ready(function() {
+
+    function penilaian(nama, nim,jlhHadir,tgs,uts ,uas){
+        jlhHadir =( jlhHadir * 10) / 100;
+        tgs = ( tgs * 20) / 100;
+        uts = ( uts * 30) / 100;
+        uas = ( uas * 40) / 100;
+        let total = jlhHadir + tgs + uts + uas;
+        let grid  = ''; 
+        if (total > 80) {
+             grid = 'A';
+        } else if(total <= 79 && total >= 71 ) {
+             grid = 'B';
+        } else if(total <= 70 && total >= 61){
+             grid = 'C';
+        } else if(total <= 60 && total >= 50){
+             grid = 'D';;
+        } else if(total <= 50){
+             grid = 'E';
+        }
+
+        let data = {
+            'nama': nama,
+            'nim' : nim,
+            'Nilai' : grid
+        }
+        
+        console.log(data);
+    }
+
+    $('.submit').click(() => {
+        let nim = $('#nim').val();
+        let nama = $('#nama').val()
+        let jlhHadir = $('#jlhHadir').val()
+        let tgs = $('#tgs').val()
+        let uts = $('#uts').val()
+        let uas = $('#uas').val()
+
+        penilaian(nama, nim,jlhHadir,tgs,uts ,uas)
+                
+    })
+    
+})
+
+</script>
+</body>
+</html>
